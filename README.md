@@ -1,3 +1,10 @@
-<div align="center">
-	<img src="https://media.tenor.com/bdHtTkZFGTIAAAAC/developers.gif" alt="Developers">
-</div>
+```typescript
+const steve: Human = {
+	name: "Steve Simkins",
+	title: "Head of Developer Relations",
+	job: "https://pinata.cloud",
+	hobbies: ["photograpy", "specialty coffee", "programming"],
+	dream: "Help build the future of the web through developers tools, cryptography, and trust based porotocols",
+	website: "https://stevedylan.dev",
+}
+```
