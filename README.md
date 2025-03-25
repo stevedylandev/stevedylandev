@@ -1,10 +1,11 @@
-```typescript
-const steve: Human = {
-    name: "Steve Simkins",
-    title: "Head of Developer Relations",
-    job: "https://pinata.cloud",
-    hobbies: ["photograpy", "specialty coffee", "programming"],
-    dream: "Help build the future of the web through developers tools, cryptography, and trust based protocols",
-    website: "https://stevedylan.dev",
+```go	
+steve := Human{
+	Name:    "Steve Simkins",
+	Title:   "Head of Developer Relations",
+	Job:     "https://pinata.cloud",
+	Hobbies: []string{"photograpy", "specialty coffee", "programming"},
+	Dream:   "Help build the future of the web through developers tools, cryptography, and trust based protocols",
+	Website: "https://stevedylan.dev",
+    SideProject: "https://orbiter.host",
 }
 ```
