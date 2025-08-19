@@ -1,11 +1,53 @@
-```go
-steve := Human{
-    Name:    "Steve Simkins",
-    Title:   "Developer Relations",
-    Job:     "https://openzeppelin.com",
-    Hobbies: []string{"photograpy", "specialty coffee", "programming"},
-    Dream:   "Help build the future of the web through developers tools, cryptography, and trust based protocols",
-    Website: "https://stevedylan.dev",
-    SideProject: "https://orbiter.host",
+```rust
+struct Human {
+    name: String,
+    title: String,
+    job: String,
+    hobbies: Vec<String>,
+    dream: String,
+    website: String,
+    side_projects: Vec<String>,
+}
+
+impl Human {
+    fn introduce(&self) {
+        println!("Name: {}", self.name);
+        println!("Title: {}", self.title);
+        println!("Job: {}", self.job);
+        println!("Website: {}", self.website);
+        
+        println!("Hobbies:");
+        for hobby in &self.hobbies {
+            println!("  - {}", hobby);
+        }
+        
+        println!("Side Projects:");
+        for project in &self.side_projects {
+            println!("  - {}", project);
+        }
+        
+        println!("Dream: {}", self.dream);
+    }
+}
+
+fn main() {
+    let steve = Human {
+        name: String::from("Steve Simkins"),
+        title: String::from("Developer Relations"),
+        job: String::from("https://openzeppelin.com"),
+        hobbies: vec![
+            String::from("photography"),
+            String::from("specialty coffee"),
+            String::from("programming")
+        ],
+        dream: String::from("Help build the future of the web through developers tools, cryptography, and trust based protocols"),
+        website: String::from("https://stevedylan.dev"),
+        side_projects: vec![
+            String::from("https://orbiter.host"),
+            String::from("https://bhvr.dev")
+        ]
+    };
+
+    steve.introduce();
 }
 ```
