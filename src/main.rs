@@ -1,4 +1,3 @@
-```rust
 use std::{thread, time::Duration};
 
 struct Human {
@@ -72,6 +71,3 @@ fn main() {
     let secret = steve.surprise();
     let _ = open::that(&secret);
 }
-```
-
-(`git clone https://github.com/stevedylandev/stevedylandev && cd stevedylandev && cargo run`)
