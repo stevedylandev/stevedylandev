@@ -1,4 +1,6 @@
-`git clone https://github.com/stevedylandev/stevedylandev && cd stevedylandev && cargo run`
+```bash
+git clone https://github.com/stevedylandev/stevedylandev && cd stevedylandev && cargo run
+```
 
 ```rust
 use std::{thread, time::Duration};
