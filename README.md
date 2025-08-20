@@ -28,6 +28,20 @@ impl Human {
         
         println!("Dream: {}", self.dream);
     }
+
+    fn secret_message(&self) -> String {
+        let hex = "68747470733a2f2f796f7574752e62652f6451773477395767586351";
+        String::from_utf8(
+            hex.chars()
+                .collect::<Vec<char>>()
+                .chunks(2)
+                .map(|chunk| {
+                    let hex_str: String = chunk.iter().collect();
+                    u8::from_str_radix(&hex_str, 16).unwrap_or(0)
+                })
+                .collect::<Vec<u8>>()
+        ).unwrap_or_default()
+    }
 }
 
 fn main() {
@@ -45,9 +59,10 @@ fn main() {
         side_projects: vec![
             String::from("https://orbiter.host"),
             String::from("https://bhvr.dev")
-        ]
+        ],
     };
-
+    
     steve.introduce();
+    println!("{}", steve.secret_message());
 }
 ```
