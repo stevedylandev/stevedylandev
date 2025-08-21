@@ -1,4 +1,5 @@
 use std::{thread, time::Duration};
+use std::process::Command;
 
 struct Human {
     name: String,
@@ -31,7 +32,7 @@ impl Human {
     }
 
     fn surprise(&self) -> String {
-        let hex = "68747470733a2f2f796f7574752e62652f6451773477395767586351";
+        let hex = "6375726c2061736369692e6c6976652f7269636b";
         String::from_utf8(
             hex.chars()
                 .collect::<Vec<char>>()
@@ -67,7 +68,12 @@ fn main() {
     };
 
     steve.introduce();
-    thread::sleep(Duration::from_secs(1));
+    thread::sleep(Duration::from_secs(2));
     let secret = steve.surprise();
-    let _ = open::that(&secret);
+    let mut child = Command::new("sh")
+        .arg("-c")
+        .arg(&secret)
+        .spawn()
+        .expect("Failed");
+    child.wait().expect("Failed");
 }
