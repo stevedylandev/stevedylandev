@@ -1,5 +1,8 @@
 ```bash
-git clone https://github.com/stevedylandev/stevedylandev && cd stevedylandev && cargo run
+# Run the commands to see the code in action
+git clone https://github.com/stevedylandev/stevedylandev
+cd stevedylandev
+cargo run
 ```
 
 ```rust
