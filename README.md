@@ -58,15 +58,15 @@ impl Human {
 fn main() {
     let steve = Human {
         name: String::from("Steve Simkins"),
-        title: String::from("DX Engineer"),
-        job: String::from("https://namehash.io"),
+        title: String::from("Senior Solutions Engineer"),
+        job: String::from("https://stablecore.com"),
         hobbies: vec![
             String::from("photography"),
             String::from("specialty coffee"),
             String::from("programming"),
         ],
         dream: String::from(
-            "Help build the future of the web through developers tools, cryptography, and trust based protocols",
+            "Help build and promote an open web",
         ),
         website: String::from("https://stevedylan.dev"),
         side_projects: vec![
