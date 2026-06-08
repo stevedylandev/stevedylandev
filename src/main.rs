@@ -1,14 +1,14 @@
-use std::{thread, time::Duration};
 use std::process::Command;
+use std::{thread, time::Duration};
 
 struct Human {
-    name: String,
-    title: String,
-    job: String,
-    hobbies: Vec<String>,
-    dream: String,
-    website: String,
-    side_projects: Vec<String>,
+    name: &'static str,
+    title: &'static str,
+    job: &'static str,
+    website: &'static str,
+    dream: &'static str,
+    hobbies: &'static [&'static str],
+    side_projects: &'static [&'static str],
 }
 
 impl Human {
@@ -17,63 +17,44 @@ impl Human {
         println!("Title: {}", self.title);
         println!("Job: {}", self.job);
         println!("Website: {}", self.website);
-
         println!("Hobbies:");
-        for hobby in &self.hobbies {
-            println!("  - {}", hobby);
+        for hobby in self.hobbies {
+            println!("  - {hobby}");
         }
-
         println!("Side Projects:");
-        for project in &self.side_projects {
-            println!("  - {}", project);
+        for project in self.side_projects {
+            println!("  - {project}");
         }
-
         println!("Dream: {}", self.dream);
     }
 
     fn surprise(&self) -> String {
         let hex = "6375726c2061736369692e6c6976652f7269636b";
-        String::from_utf8(
-            hex.chars()
-                .collect::<Vec<char>>()
-                .chunks(2)
-                .map(|chunk| {
-                    let hex_str: String = chunk.iter().collect();
-                    u8::from_str_radix(&hex_str, 16).unwrap_or(0)
-                })
-                .collect::<Vec<u8>>(),
-        )
-        .unwrap_or_default()
+        let bytes: Vec<u8> = (0..hex.len())
+            .step_by(2)
+            .map(|i| u8::from_str_radix(&hex[i..i + 2], 16).unwrap())
+            .collect();
+        String::from_utf8(bytes).unwrap()
     }
 }
 
 fn main() {
     let steve = Human {
-        name: String::from("Steve Simkins"),
-        title: String::from("Senior Solutions Engineer"),
-        job: String::from("https://stablecore.com"),
-        hobbies: vec![
-            String::from("photography"),
-            String::from("specialty coffee"),
-            String::from("programming"),
-        ],
-        dream: String::from(
-            "Help build and promote an open web",
-        ),
-        website: String::from("https://stevedylan.dev"),
-        side_projects: vec![
-            String::from("https://orbiter.host"),
-            String::from("https://bhvr.dev"),
-        ],
+        name: "Steve Simkins",
+        title: "Senior Solutions Engineer",
+        job: "https://stablecore.com",
+        website: "https://stevedylan.dev",
+        dream: "Help build and promote an open web",
+        hobbies: &["photography", "bird watching", "blogging", "building personal software"],
+        side_projects: &["https://andromeda.build", "https://sequoia.pub", "https://bhvr.dev"],
     };
 
     steve.introduce();
     thread::sleep(Duration::from_secs(2));
-    let secret = steve.surprise();
-    let mut child = Command::new("sh")
+
+    Command::new("sh")
         .arg("-c")
-        .arg(&secret)
-        .spawn()
-        .expect("Failed");
-    child.wait().expect("Failed");
+        .arg(steve.surprise())
+        .status()
+        .expect("Failed to run surprise :(");
 }
