@@ -1,4 +1,4 @@
-![cover](https://files.stevedylan.dev/github-profile.png)
+![cover](https://files.stevedylan.dev/github-profile-new.png)
 
 ```bash
 # Run the commands to see the code in action
