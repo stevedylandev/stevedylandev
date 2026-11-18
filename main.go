@@ -84,8 +84,8 @@ func main() {
 		Row{Key: "job", Value: "https://stablecore.com"},
 		Row{Key: "website", Value: "https://stevedylan.dev"},
 		Row{Key: "dream", Value: "Enable freedom in software"},
-		Row{Key: "interests", Value: "arts, science, nature"},
-		Row{Key: "projects", Value: "gargantua, andromeda.build, sequoia.pub, bhvr.dev"},
+		Row{Key: "interests", Value: "art, literature, science, nature"},
+		Row{Key: "projects", Value: "gargantua.page, andromeda.build"},
 	}
 	PrintRows(rows)
 	PrintPalette()
